@@ -1,7 +1,11 @@
 - Resources found:
-
+	https://tweepy.readthedocs.io/en/latest/
 - Articles on the topic:
-
+	Sheryl Mathias, Namratha Jagadeesh - "Detecting Fake News Tweets from Twitter"
+	Kevin Makice - "Twitter API: Up and Running"
+	Matthew A. Russell - "21 Recipes for Mining Twitter"
 - Other information:
-
+	Am creat cont de developer pe Twitter pentru a putea folosi API-ul lor in procesul de crawling
 - Questions:
+	De ce date avem nevoie mai exact?
+	Unde/cum salvam aceste date?
