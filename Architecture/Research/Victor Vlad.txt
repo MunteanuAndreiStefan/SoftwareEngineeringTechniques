@@ -5,3 +5,12 @@
 - Other information:
 
 - Questions:
+
+# Resources and tools available
+#### Twitter API
+https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/overview
+#### Twitter API Python
+https://stackabuse.com/accessing-the-twitter-api-with-python/
+#### Twitter API Javascript
+https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/overview
+https://blog.rapidapi.com/how-to-use-the-twitter-api-with-javascript/
