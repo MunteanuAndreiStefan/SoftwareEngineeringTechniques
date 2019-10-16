@@ -1,6 +1,15 @@
 - Resources found:
-
+https://developer.twitter.com/en/docs
+https://www.google.com/streetview/
+http://exif.regex.info/exif.cgi
+https://www.tineye.com/
+http://wikimapia.org/#lang=ro&lat=51.514200&lon=-0.093100&z=12&m=w
+https://www.mindtools.com/pages/article/fake-news.htm
+https://www.sciencedirect.com/science/article/pii/S1877050918318210
+https://www.politifact.com/
 - Articles on the topic:
+
+
 
 - Other information:
 
