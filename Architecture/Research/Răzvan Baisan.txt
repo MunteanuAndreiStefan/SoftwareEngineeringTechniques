@@ -1,7 +1,15 @@
 - Resources found:
 
+https://www.kaggle.com/c/fake-news/data
+
 - Articles on the topic:
+
+https://www.sciencedirect.com/science/article/pii/S1877050918318210
+https://www.sciencedirect.com/science/article/abs/pii/S0377221719304977
+https://paperswithcode.com/paper/learning-from-fact-checkers-analysis-and
 
 - Other information:
 
 - Questions:
+
+Folosim exclusiv tweet-ul? Reply-uri? Cautam stirea si in alte locuri?
