@@ -15,3 +15,6 @@ Team members:
   - Victor Vlad
   - Pantelemon Victor-Stefan
   - Ursu Vlad-Florin
+
+Link to our development page:
+https://munteanuandreistefan.github.io/SoftwareEngineeringTechniques/
