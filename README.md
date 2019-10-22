@@ -1,9 +1,8 @@
 # Real time fake news detection
 Project for advanced software engineering techniques subject on Distribuited System master
 
-Functional requirements:
+Functional Requirements:
   - Information will be collected from Twitter (posts, user information (number of posts, folowers, account creation date, etc.))
-  - The application will run for chrome and firefox
   - User profiles will be built (characterized by details about the user, user activity, reactions of other users to what he does on the network, etc.)
   - A metric will be proposed to calculate the credibility of a post
   - A metric will be proposed for credibility of a user
@@ -16,18 +15,28 @@ Functional requirements:
   - Fronted will be able to edit the stric level of the marking
   - Fronted will show analized resources
   - All users will be unique
+  - User posibility to mark a post as fake manually
 
-Actor will be:
+Actors:
   - Any user that will have the plugin installed
 
-Use cases:
+Use Cases:
   - User will be able to install the plugin from a store
-  - User will be able to disable / enable the application.
+  - User will be able to disable/enable the application.
   - User will be able to set the maximum/minimum level of marking a news as fake
   - User will be able to see results from a news
   - User will be able to see what resources we found
   - User will be able to open those resources
 
+Non-Functional Requirements:
+  - Cache centralized system for all the users
+  - Nothing on security side for the final product due it's created only for academic purposes
+  - The application will run for chrome and firefox
+  - Level of trust per user, calculated with a Bayes/ML/Statistical methods over semantic or non semantic data
+  - Take advantage of posts metadata
+  - "Layers of trust" in order to say as fast as possible if a post is fake or not
+  - Parser with BS4 in order to get information from trusted websites
+  - Implement a crawler maybe with google in order to find credible sources
 
 Team members:
   - Munteanu Andrei-Ștefan - Contact member
