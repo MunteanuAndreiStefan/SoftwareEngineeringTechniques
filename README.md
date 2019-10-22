@@ -36,7 +36,16 @@ Non-Functional Requirements:
   - Take advantage of posts metadata
   - "Layers of trust" in order to say as fast as possible if a post is fake or not
   - Parser with BS4 in order to get information from trusted websites
-  - Implement a crawler maybe with google in order to find credible sources
+  - Implement a crawler maybe with search engines in order to find credible sources
+
+Final components:
+  - Frontend: the plugin
+  - Backend: a highway for our cache system.
+  - Process unit: on the frontend via js, compatible languages and on microservices if needed more horse power
+  - Crawling: a component for crawling on search engines/engine
+  - Parser: in order to get information from lists of documents found
+  - Training unit: collect cache information and create model if needed for process unit
+  - Twitter collector: delivers the data to the process unit
 
 Team members:
   - Munteanu Andrei-Ștefan - Contact member
@@ -45,3 +54,6 @@ Team members:
   - Victor Vlad
   - Pantelemon Victor-Stefan
   - Ursu Vlad-Florin
+
+Link to our development page:
+https://munteanuandreistefan.github.io/SoftwareEngineeringTechniques/
