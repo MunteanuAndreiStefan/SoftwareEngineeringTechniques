@@ -28,6 +28,13 @@ namespace FakeNewsDetectionCache.API.Controllers
       return new JsonResult(items);
     }
 
+    [HttpGet]
+    public async Task<JsonResult> Get()
+    {
+      var items = await NewsArticleService.GetAll();
+      return new JsonResult(items);
+    }
+
     [HttpPost]
     public async Task Post(NewsArticleViewModel model)
     {
