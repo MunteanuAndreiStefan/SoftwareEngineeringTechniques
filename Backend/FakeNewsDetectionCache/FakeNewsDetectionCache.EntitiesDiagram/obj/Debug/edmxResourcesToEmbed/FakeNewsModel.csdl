@@ -2,11 +2,12 @@
 <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FakeNewsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
   <EntityContainer Name="FakeNewsModelContainer" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="NewsArticles" EntityType="FakeNewsModel.NewsArticle" />
-    <EntitySet Name="Users" EntityType="FakeNewsModel.User" />
+    <EntitySet Name="TwitterUsers" EntityType="FakeNewsModel.TwitterUser" />
     <AssociationSet Name="NewsArticeUser" Association="FakeNewsModel.NewsArticeUser">
       <End Role="NewsArtice" EntitySet="NewsArticles" />
-      <End Role="User" EntitySet="Users" />
+      <End Role="User" EntitySet="TwitterUsers" />
     </AssociationSet>
+    <EntitySet Name="ApplicationUsers" EntityType="FakeNewsModel.ApplicationUser" />
   </EntityContainer>
   <EntityType Name="NewsArticle">
     <Key>
@@ -17,7 +18,7 @@
     <NavigationProperty Name="User" Relationship="FakeNewsModel.NewsArticeUser" FromRole="NewsArtice" ToRole="User" />
     <Property Name="CredibilityScore" Type="Int32" Nullable="true" />
   </EntityType>
-  <EntityType Name="User">
+  <EntityType Name="TwitterUser">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -28,6 +29,14 @@
   </EntityType>
   <Association Name="NewsArticeUser">
     <End Type="FakeNewsModel.NewsArticle" Role="NewsArtice" Multiplicity="*" />
-    <End Type="FakeNewsModel.User" Role="User" Multiplicity="1" />
+    <End Type="FakeNewsModel.TwitterUser" Role="User" Multiplicity="1" />
   </Association>
+  <EntityType Name="ApplicationUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" />
+    <Property Name="CredibilityScore" Type="Int32" Nullable="true" />
+  </EntityType>
 </Schema>

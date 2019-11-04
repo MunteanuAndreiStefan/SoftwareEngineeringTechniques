@@ -16,15 +16,15 @@ namespace FakeNewsDetectionCache.API.ViewModels
 
     }
 
-    public UserViewModel(User user)
+    public UserViewModel(TwitterUser user)
     {
       Username = user.Username;
       CredibilityScore = user.CredibilityScore;
     }
 
-    public User ToEntity()
+    public TwitterUser ToEntity()
     {
-      return new User { 
+      return new TwitterUser { 
         Username = Username, 
         CredibilityScore = CredibilityScore 
       };

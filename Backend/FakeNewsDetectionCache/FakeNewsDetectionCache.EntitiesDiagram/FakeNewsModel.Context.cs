@@ -26,6 +26,7 @@ namespace FakeNewsDetectionCache.EntitiesDiagram
         }
     
         public virtual DbSet<NewsArticle> NewsArticles { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<TwitterUser> TwitterUsers { get; set; }
+        public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FakeNewsDetectionCache.Interfaces
 {
-  public interface IUserService:ICrudService<User>
+  public interface IUserService:ICrudService<TwitterUser>
   {
   }
 }

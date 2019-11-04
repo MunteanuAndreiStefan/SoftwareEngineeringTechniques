@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/28/2019 17:58:09
--- Generated from EDMX file: C:\Users\vpantelemon\source\repos\FakeNewsDetectionCache\FakeNewsDetectionCache.EntitiesDiagram\FakeNewsModel.edmx
+-- Date Created: 11/04/2019 15:23:44
+-- Generated from EDMX file: C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.EntitiesDiagram\FakeNewsModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -45,8 +45,16 @@ CREATE TABLE [dbo].[NewsArticles] (
 );
 GO
 
--- Creating table 'Users'
-CREATE TABLE [dbo].[Users] (
+-- Creating table 'TwitterUsers'
+CREATE TABLE [dbo].[TwitterUsers] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Username] nvarchar(max)  NOT NULL,
+    [CredibilityScore] int  NULL
+);
+GO
+
+-- Creating table 'ApplicationUsers'
+CREATE TABLE [dbo].[ApplicationUsers] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Username] nvarchar(max)  NOT NULL,
     [CredibilityScore] int  NULL
@@ -63,9 +71,15 @@ ADD CONSTRAINT [PK_NewsArticles]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Users'
-ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [PK_Users]
+-- Creating primary key on [Id] in table 'TwitterUsers'
+ALTER TABLE [dbo].[TwitterUsers]
+ADD CONSTRAINT [PK_TwitterUsers]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ApplicationUsers'
+ALTER TABLE [dbo].[ApplicationUsers]
+ADD CONSTRAINT [PK_ApplicationUsers]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -77,7 +91,7 @@ GO
 ALTER TABLE [dbo].[NewsArticles]
 ADD CONSTRAINT [FK_NewsArticeUser]
     FOREIGN KEY ([User_Id])
-    REFERENCES [dbo].[Users]
+    REFERENCES [dbo].[TwitterUsers]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO

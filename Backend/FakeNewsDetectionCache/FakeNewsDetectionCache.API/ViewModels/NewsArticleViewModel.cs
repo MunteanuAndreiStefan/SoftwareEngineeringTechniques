@@ -17,16 +17,16 @@ namespace FakeNewsDetectionCache.API.ViewModels
 
     }
 
-    public NewsArticleViewModel(NewsArticle newsArticle)
+    public NewsArticleViewModel(Entities.Models.NewsArticle newsArticle)
     {
       Source = newsArticle.Source;
       CredibilityScore = newsArticle.CredibilityScore;
       UserId = newsArticle.UserId;
     }
 
-    public NewsArticle ToEntity()
+    public Entities.Models.NewsArticle ToEntity()
     {
-      return new NewsArticle
+      return new Entities.Models.NewsArticle
       {
         Source = Source,
         CredibilityScore = CredibilityScore,

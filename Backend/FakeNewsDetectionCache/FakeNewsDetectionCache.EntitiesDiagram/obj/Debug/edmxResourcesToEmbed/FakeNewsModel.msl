@@ -10,9 +10,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="IsTypeOf(FakeNewsModel.User)">
-        <MappingFragment StoreEntitySet="Users">
+    <EntitySetMapping Name="TwitterUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(FakeNewsModel.TwitterUser)">
+        <MappingFragment StoreEntitySet="TwitterUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="CredibilityScore" ColumnName="CredibilityScore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(FakeNewsModel.ApplicationUser)">
+        <MappingFragment StoreEntitySet="ApplicationUsers">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="CredibilityScore" ColumnName="CredibilityScore" />
