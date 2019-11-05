@@ -15,8 +15,12 @@ def export_posts_collection():
         del post['_id']  # not JSON serializable
         json_post = json.dumps(post)
         print(json_post, type(json_post))
-        redis_client.lpush('posts', json_post)
+        redis_client.lpush("post", json_post)
+
+def dump_redis_list():
+    redis_client.dump("post")
 
 
 if __name__ == '__main__':
-    export_posts_collection()
+    # export_posts_collection()
+    dump_redis_list()
