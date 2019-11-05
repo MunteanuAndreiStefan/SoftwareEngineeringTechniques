@@ -31,11 +31,10 @@ namespace FakeNewsDetectionCache.API.Controllers
         }
 
 
-
         [HttpGet("{model}")]
         public async Task<JsonResult> GetFiltered(FilterViewModel model)
         {
-            var items = await NewsArticleService.GetByFilter(model.GetFilter());
+            var items = await model.ApplyFilter(await NewsArticleService.GetAsQueriable());
             return new JsonResult(items);
         }
 
@@ -43,6 +42,21 @@ namespace FakeNewsDetectionCache.API.Controllers
         public async Task Post(NewsArticleViewModel model)
         {
             await NewsArticleService.Add(model.ToEntity());
+        }
+
+        [HttpPut]
+        public async Task Put(NewsArticleViewModel model)
+        {
+            await NewsArticleService.Update(model.ToEntity());
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task Delete(int Id)
+        {
+            var entityToDelete = (await NewsArticleService.GetByFilter(x => x.Id == Id)).FirstOrDefault();
+
+            if (entityToDelete != null)
+                await NewsArticleService.Delete(entityToDelete);
         }
 
     }
