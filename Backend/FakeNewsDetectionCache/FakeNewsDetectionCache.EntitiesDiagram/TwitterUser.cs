@@ -12,10 +12,10 @@ namespace FakeNewsDetectionCache.EntitiesDiagram
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class TwitterUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public TwitterUser()
         {
             this.NewsArtices = new HashSet<NewsArticle>();
         }

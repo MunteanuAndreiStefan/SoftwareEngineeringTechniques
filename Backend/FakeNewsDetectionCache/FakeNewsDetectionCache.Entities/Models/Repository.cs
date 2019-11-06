@@ -16,20 +16,31 @@ namespace FakeNewsDetectionCache.Entities.Models
         {
         }
 
+        //public virtual DbSet<NewsArticle> NewsArticles { get; set; }
+        //public virtual DbSet<TwitterUser> Users { get; set; }
+
+        public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public virtual DbSet<NewsArticle> NewsArticles { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<TwitterUser> TwitterUsers { get; set; }
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=BEE-WS-92\\SQLEXPRESS;Database=FakeNewsDetectionCache;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=SCYLLA\\SQLEXPRESS;Database=FakeNewsDetectionCache;Trusted_Connection=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ApplicationUser>(entity =>
+            {
+                entity.Property(e => e.Username).IsRequired();
+            });
+
             modelBuilder.Entity<NewsArticle>(entity =>
             {
                 entity.HasIndex(e => e.UserId)
@@ -46,7 +57,7 @@ namespace FakeNewsDetectionCache.Entities.Models
                     .HasConstraintName("FK_NewsArticeUser");
             });
 
-            modelBuilder.Entity<User>(entity =>
+            modelBuilder.Entity<TwitterUser>(entity =>
             {
                 entity.Property(e => e.Username).IsRequired();
             });
@@ -56,7 +67,7 @@ namespace FakeNewsDetectionCache.Entities.Models
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-    public override ValueTask DisposeAsync()
+        public override ValueTask DisposeAsync()
     {
       return base.DisposeAsync();
     }

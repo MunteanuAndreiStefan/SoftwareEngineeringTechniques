@@ -8105,23 +8105,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vpantelemon\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\maste\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vpantelemon\\source\\repos\\FakeNewsDetectionCache\\FakeNewsDetectionCache.API\\FakeNewsDetectionCache.API.csproj",
+      "projectUniqueName": "C:\\Users\\maste\\Desktop\\SoftwareEngineeringTechniques\\Backend\\FakeNewsDetectionCache\\FakeNewsDetectionCache.API\\FakeNewsDetectionCache.API.csproj",
       "projectName": "FakeNewsDetectionCache.API",
-      "projectPath": "C:\\Users\\vpantelemon\\source\\repos\\FakeNewsDetectionCache\\FakeNewsDetectionCache.API\\FakeNewsDetectionCache.API.csproj",
-      "packagesPath": "C:\\Users\\vpantelemon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vpantelemon\\source\\repos\\FakeNewsDetectionCache\\FakeNewsDetectionCache.API\\obj\\",
+      "projectPath": "C:\\Users\\maste\\Desktop\\SoftwareEngineeringTechniques\\Backend\\FakeNewsDetectionCache\\FakeNewsDetectionCache.API\\FakeNewsDetectionCache.API.csproj",
+      "packagesPath": "C:\\Users\\maste\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maste\\Desktop\\SoftwareEngineeringTechniques\\Backend\\FakeNewsDetectionCache\\FakeNewsDetectionCache.API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\vpantelemon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\maste\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8134,11 +8130,11 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\vpantelemon\\source\\repos\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Interfaces\\FakeNewsDetectionCache.Interfaces.csproj": {
-              "projectPath": "C:\\Users\\vpantelemon\\source\\repos\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Interfaces\\FakeNewsDetectionCache.Interfaces.csproj"
+            "C:\\Users\\maste\\Desktop\\SoftwareEngineeringTechniques\\Backend\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Interfaces\\FakeNewsDetectionCache.Interfaces.csproj": {
+              "projectPath": "C:\\Users\\maste\\Desktop\\SoftwareEngineeringTechniques\\Backend\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Interfaces\\FakeNewsDetectionCache.Interfaces.csproj"
             },
-            "C:\\Users\\vpantelemon\\source\\repos\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Service\\FakeNewsDetectionCache.Service.csproj": {
-              "projectPath": "C:\\Users\\vpantelemon\\source\\repos\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Service\\FakeNewsDetectionCache.Service.csproj"
+            "C:\\Users\\maste\\Desktop\\SoftwareEngineeringTechniques\\Backend\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Service\\FakeNewsDetectionCache.Service.csproj": {
+              "projectPath": "C:\\Users\\maste\\Desktop\\SoftwareEngineeringTechniques\\Backend\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Service\\FakeNewsDetectionCache.Service.csproj"
             }
           }
         }

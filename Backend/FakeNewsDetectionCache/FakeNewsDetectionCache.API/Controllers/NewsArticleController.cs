@@ -6,34 +6,59 @@ using FakeNewsDetectionCache.API.ViewModels;
 using FakeNewsDetectionCache.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using FakeNewsDetectionCache.API.ViewModels.NewsArticle;
 
 namespace FakeNewsDetectionCache.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-  public class NewsArticleController : ControllerBase
-  {
-
-    protected INewsArticleService NewsArticleService;
-
-    public NewsArticleController(INewsArticleService newsArticleService)
+    public class NewsArticleController : ControllerBase
     {
-      NewsArticleService = newsArticleService;
-    }
 
-    [HttpGet]
-    public async Task<JsonResult> Get()
-    {
-      var items =await NewsArticleService.GetAll();
-      return new JsonResult(items);
-    }
+        protected INewsArticleService NewsArticleService;
 
-    [HttpPost]
-    public async Task Post(NewsArticleViewModel model)
-    {
-      await NewsArticleService.Add(model.ToEntity());
-    }
+        public NewsArticleController(INewsArticleService newsArticleService)
+        {
+            NewsArticleService = newsArticleService;
+        }
 
-  }
+
+        [HttpGet]
+        public async Task<JsonResult> Get()
+        {
+            var items = await NewsArticleService.GetAll();
+            return new JsonResult(items);
+        }
+
+
+        [HttpGet("{model}")]
+        public async Task<JsonResult> GetFiltered(FilterViewModel model)
+        {
+            var items = await model.ApplyFilter(await NewsArticleService.GetAsQueriable());
+            return new JsonResult(items);
+        }
+
+        [HttpPost]
+        public async Task Post(NewsArticleViewModel model)
+        {
+            await NewsArticleService.Add(model.ToEntity());
+        }
+
+        [HttpPut]
+        public async Task Put(NewsArticleViewModel model)
+        {
+            await NewsArticleService.Update(model.ToEntity());
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task Delete(int Id)
+        {
+            var entityToDelete = (await NewsArticleService.GetByFilter(x => x.Id == Id)).FirstOrDefault();
+
+            if (entityToDelete != null)
+                await NewsArticleService.Delete(entityToDelete);
+        }
+
+    }
 }
 

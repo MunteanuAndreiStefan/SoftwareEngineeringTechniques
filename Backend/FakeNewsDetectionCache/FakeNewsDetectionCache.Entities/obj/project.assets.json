@@ -4867,23 +4867,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vpantelemon\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\maste\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vpantelemon\\source\\repos\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Entities\\FakeNewsDetectionCache.Entities.csproj",
+      "projectUniqueName": "C:\\Users\\maste\\Desktop\\SoftwareEngineeringTechniques\\Backend\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Entities\\FakeNewsDetectionCache.Entities.csproj",
       "projectName": "FakeNewsDetectionCache.Entities",
-      "projectPath": "C:\\Users\\vpantelemon\\source\\repos\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Entities\\FakeNewsDetectionCache.Entities.csproj",
-      "packagesPath": "C:\\Users\\vpantelemon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vpantelemon\\source\\repos\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Entities\\obj\\",
+      "projectPath": "C:\\Users\\maste\\Desktop\\SoftwareEngineeringTechniques\\Backend\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Entities\\FakeNewsDetectionCache.Entities.csproj",
+      "packagesPath": "C:\\Users\\maste\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maste\\Desktop\\SoftwareEngineeringTechniques\\Backend\\FakeNewsDetectionCache\\FakeNewsDetectionCache.Entities\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\vpantelemon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\maste\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

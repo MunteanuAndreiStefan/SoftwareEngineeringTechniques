@@ -6,11 +6,11 @@ using System.Text;
 
 namespace FakeNewsDetectionCache.Service
 {
-  public class UserService:CrudService<User,Repository>,IUserService
-  {
-    public UserService(Repository dbContext) : base(dbContext)
+    public class ApplicationUserService: CrudService<ApplicationUser, Repository>, IApplicationUserService
     {
+        public ApplicationUserService(Repository dbContext) : base(dbContext)
+        {
 
+        }
     }
-  }
 }

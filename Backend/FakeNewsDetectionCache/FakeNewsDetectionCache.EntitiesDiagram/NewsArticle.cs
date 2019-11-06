@@ -18,6 +18,6 @@ namespace FakeNewsDetectionCache.EntitiesDiagram
         public string Source { get; set; }
         public Nullable<int> CredibilityScore { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual TwitterUser User { get; set; }
     }
 }
