@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FakeNewsDetectionCache.Entities;
 using FakeNewsDetectionCache.Entities.Models;
 using FakeNewsDetectionCache.Interfaces;
 using FakeNewsDetectionCache.Service;
@@ -33,11 +34,14 @@ namespace FakeNewsDetectionCache.API
             services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_3_0); ;
 
             var connection = @"Server=localhost\SQLEXPRESS;Database=FakeNewsDetectionCache;Trusted_Connection=True;";
+
             services.AddDbContext<Repository>(options => options.UseSqlServer(connection));
+
+            //services.AddDbContext<Repository>(options => options.UseInMemoryDatabase("fakedb"));
+            
             services.AddScoped<ITwitterUserService, TwitterUserService>();
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
             services.AddScoped<INewsArticleService, NewsArticleService>();
-
 
 
             // Register the Swagger generator, defining 1 or more Swagger documents

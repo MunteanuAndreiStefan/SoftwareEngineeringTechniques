@@ -68,12 +68,12 @@ namespace FakeNewsDetectionCache.Entities.Models
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
         public override ValueTask DisposeAsync()
-    {
-      return base.DisposeAsync();
+        {
+            return base.DisposeAsync();
+        }
+        public override void Dispose()
+        {
+            base.Dispose();
+        }
     }
-    public override void Dispose()
-    {
-      base.Dispose();
-    }
-  }
 }

@@ -31,7 +31,7 @@ namespace FakeNewsDetectionCache.API.Controllers
         }
 
 
-        [HttpGet("{model}")]
+        [HttpPost("{model}")]
         public async Task<JsonResult> GetFiltered(NewsArticleFilterViewModel model)
         {
             var items = await model.ApplyFilter(await NewsArticleService.GetAsQueriable());

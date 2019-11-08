@@ -240,5 +240,6 @@ C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCa
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.MvcApplicationPartsAssemblyInfo.cache
