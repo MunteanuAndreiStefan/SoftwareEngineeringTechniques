@@ -117,7 +117,6 @@ C:\Users\vpantelemon\source\repos\FakeNewsDetectionCache\FakeNewsDetectionCache.
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.csprojAssemblyReference.cache
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\staticwebassets\FakeNewsDetectionCache.API.StaticWebAssets.Manifest.cache
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\staticwebassets\FakeNewsDetectionCache.API.StaticWebAssets.xml
-C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.AssemblyInfoInputs.cache
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.AssemblyInfo.cs
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.dll
@@ -230,3 +229,16 @@ C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCa
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\FakeNewsDetectionCache.Entities.pdb
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.RazorTargetAssemblyInfo.cache
 C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.csproj.CopyComplete
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.xml
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.xml
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Microsoft.OpenApi.dll
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.API\obj\Debug\netcoreapp3.0\FakeNewsDetectionCache.API.MvcApplicationPartsAssemblyInfo.cache
