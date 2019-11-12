@@ -10,15 +10,13 @@ redis_client = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 
 def process_tweet(tweet):
-    pass
+    print(tweet)
 
 
 def worker():
-    while redis_client.llen('posts') != 0:
-        tweet = redis_client.rpop('posts')
+    while redis_client.llen('post') != 0:
+        tweet = redis_client.lpop('post')
         process_tweet(tweet)
-    else:
-        time.sleep(10)
 
 
 if __name__ == '__main__':
