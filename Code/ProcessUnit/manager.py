@@ -1,14 +1,15 @@
 import re
 import json
-import random
 import requests
-from analyzers import TweetAnalyzerRandom, TweetAnalyzerHeuristic
+from analyzers import TweetAnalyzerRandom, UserAnalyzerRandom
+from config import Config as cfg
 
 class Manager():
 
     def __init__(self):
 
-        self.analyzer = TweetAnalyzerRandom()
+        self.tweet_analyzer = TweetAnalyzerRandom()
+        self.user_analyzer = UserAnalyzerRandom()
 
     def generate_tweet_response(self, tweet_url, score, username):
         return {
@@ -21,7 +22,7 @@ class Manager():
 
         username = re.findall(r'twitter.com/(\w+)/status/', tweet_url)[0]
 
-        content = requests.get(r'https://fakenewsdetection.azurewebsites.net/api/NewsArticles').content
+        content = requests.get(cfg.tweet_cache_url).content
 
         tweet_list = json.loads(content)
 
@@ -32,7 +33,7 @@ class Manager():
                 print(f"Tweet data is in cache.")
                 return self.generate_tweet_response(tweet_url, tweet['credibilityScore'], username)
 
-        score = self.analyzer.analyze(tweet_url)
+        score = self.tweet_analyzer.analyze(tweet_url)
 
         cache_entry = {
             "id": 0,
@@ -45,10 +46,9 @@ class Manager():
 
         print(f"NEW ENTRY\n{json_content}")
 
-        requests.post(r'https://fakenewsdetection.azurewebsites.net/api/NewsArticles', headers={"Content-Type": "application/json", "Accept": "text/plain"}, json=cache_entry)
+        requests.post(cfg.tweet_cache_url, headers={"Content-Type": "application/json", "Accept": "text/plain"}, json=cache_entry)
 
         return self.generate_tweet_response(tweet_url, score, username)
 
     def analyze_user(self, user_id):
-        # TODO: find twitter user fake api
-        return random.randrange(0, 100)
+        return self.user_analyzer.analyze(user_id)

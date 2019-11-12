@@ -1,5 +1,7 @@
 import random
 
+### Tweet analyzers
+
 class TweetAnalyzer:
     
     def __init__(self):
@@ -11,8 +13,8 @@ class TweetAnalyzer:
 
     def analyze(self, tweet_url):
         pass
-    
-    
+
+
 class TweetAnalyzerRandom(TweetAnalyzer):
     
     def analyze(self, tweet_url):
@@ -35,3 +37,19 @@ class TweetAnalyzerSemantic(TweetAnalyzer):
 
     def analyze(self, tweet_url):
         return 0
+
+### User analyzers
+
+class UserAnalyzer:
+    
+    def __init__(self):
+        pass
+
+    def analyze(self, user_id):
+        pass
+    
+   
+class UserAnalyzerRandom(UserAnalyzer):
+    
+    def analyze(self, user_id):
+        return random.randrange(0, 100)
