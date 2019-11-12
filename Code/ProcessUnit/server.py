@@ -12,11 +12,11 @@ def index():
 @app.route('/tweet/')
 def fake_tweet():
 
-    tweet_id = request.args.get("id")
-    score = manager.fake_tweet_score(tweet_id)
+    tweet_url = request.args.get("tweet_url")
+    score = manager.fake_tweet_score(tweet_url)
     
     response = {
-        "id": tweet_id,
+        "url": tweet_url,
         "score": score
     }
 
