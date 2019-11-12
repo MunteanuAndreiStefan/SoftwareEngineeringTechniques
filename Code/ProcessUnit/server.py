@@ -13,26 +13,16 @@ def index():
 def fake_tweet():
 
     tweet_url = request.args.get("tweet_url")
-    score = manager.fake_tweet_score(tweet_url)
+    response = manager.analyze_tweet(tweet_url)
     
-    response = {
-        "url": tweet_url,
-        "score": score
-    }
-
     return json.dumps(response, indent=4)
 
 @app.route('/user/')
 def fake_user():
 
     user_id = request.args.get("id")
-    score = manager.fake_user_score(user_id)
+    response = manager.analyze_user(user_id)
     
-    response = {
-        "id": user_id,
-        "score": score
-    }
-
     return json.dumps(response, indent=4)
 
 app.run(host='0.0.0.0', port=12345, debug=True)
