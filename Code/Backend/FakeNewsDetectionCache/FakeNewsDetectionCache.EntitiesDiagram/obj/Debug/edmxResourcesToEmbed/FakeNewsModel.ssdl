@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FakeNewsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FakeNewsModelStoreContainer">
+    <EntitySet Name="NewsArticles" EntityType="FakeNewsModel.Store.NewsArticles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TwitterUsers" EntityType="FakeNewsModel.Store.TwitterUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ApplicationUsers" EntityType="FakeNewsModel.Store.ApplicationUsers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="NewsArticeUser" Association="FakeNewsModel.Store.NewsArticeUser">
+      <End Role="NewsArtice" EntitySet="NewsArticles" />
+      <End Role="User" EntitySet="TwitterUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="NewsArticles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Source" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CredibilityScore" Type="int" Nullable="true" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TwitterUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CredibilityScore" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ApplicationUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CredibilityScore" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="NewsArticeUser">
+    <End Role="NewsArtice" Type="FakeNewsModel.Store.NewsArticles" Multiplicity="*" />
+    <End Role="User" Type="FakeNewsModel.Store.TwitterUsers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NewsArtice">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

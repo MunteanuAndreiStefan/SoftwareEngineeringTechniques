@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FakeNewsModelStoreContainer" CdmEntityContainer="FakeNewsModelContainer">
+    <EntitySetMapping Name="NewsArticles">
+      <EntityTypeMapping TypeName="IsTypeOf(FakeNewsModel.NewsArticle)">
+        <MappingFragment StoreEntitySet="NewsArticles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="CredibilityScore" ColumnName="CredibilityScore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TwitterUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(FakeNewsModel.TwitterUser)">
+        <MappingFragment StoreEntitySet="TwitterUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="CredibilityScore" ColumnName="CredibilityScore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(FakeNewsModel.ApplicationUser)">
+        <MappingFragment StoreEntitySet="ApplicationUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="CredibilityScore" ColumnName="CredibilityScore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="NewsArticeUser" TypeName="FakeNewsModel.NewsArticeUser" StoreEntitySet="NewsArticles">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="NewsArtice">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
