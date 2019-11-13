@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using FakeNewsDetectionCache.Aspects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Logging;
 
 namespace FakeNewsDetectionCache.Entities.Models
 {
+    [Log]
     public partial class Repository : DbContext
     {
         public Repository()
@@ -68,12 +71,12 @@ namespace FakeNewsDetectionCache.Entities.Models
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
         public override ValueTask DisposeAsync()
-    {
-      return base.DisposeAsync();
+        {
+            return base.DisposeAsync();
+        }
+        public override void Dispose()
+        {
+            base.Dispose();
+        }
     }
-    public override void Dispose()
-    {
-      base.Dispose();
-    }
-  }
 }
