@@ -17,10 +17,16 @@ def export_posts_collection():
         print(json_post, type(json_post))
         redis_client.lpush("post", json_post)
 
-def dump_redis_list():
-    redis_client.dump("post")
+
+def dump_mongo_collection():
+    posts = []
+    for post in posts_collection.find():
+        del post['_id']
+        posts.append(post)
+    with open("posts_collection.json", 'w') as fd:
+        json.dump(posts, fd, indent=4)
 
 
 if __name__ == '__main__':
     # export_posts_collection()
-    dump_redis_list()
+    dump_mongo_collection()
