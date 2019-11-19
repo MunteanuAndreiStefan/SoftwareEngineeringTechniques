@@ -12,7 +12,9 @@ namespace FakeNewsDetectionCache.API.ViewModels
         public int? Id { get; set; }
         [Required]
         public string Source { get; set; }
+        [Required]
         public int? CredibilityScore { get; set; }
+        [Required]
         public int UserId { get; set; }
 
         public NewsArticleViewModel()

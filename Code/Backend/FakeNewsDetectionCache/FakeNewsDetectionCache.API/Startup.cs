@@ -34,7 +34,14 @@ namespace FakeNewsDetectionCache.API
 
             services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_3_0); ;
 
-            var connection = @"Server=localhost\SQLEXPRESS;Database=FakeNewsDetectionCache;Trusted_Connection=True;";
+            //var connection = @"Server=localhost\SQLEXPRESS;Database=FakeNewsDetectionCache;Trusted_Connection=True;";
+            var connection =
+            Microsoft
+                .Extensions
+                .Configuration
+                .ConfigurationExtensions
+                .GetConnectionString(this.Configuration, "FakeNewsModelContainer");
+
 
             services.AddDbContext<Repository>(options => options.UseSqlServer(connection)
                                                         .UseLoggerFactory(new LoggerFactory().AddFile("Logs/ts-{Date}.txt"))
@@ -91,7 +98,7 @@ namespace FakeNewsDetectionCache.API
                 endpoints.MapControllers();
             });
 
-            
+
 
         }
     }
