@@ -41,6 +41,7 @@ namespace FakeNewsDetectionCache.API.Controllers
         [HttpPost]
         public async Task Post(TwitterUserViewModel model)
         {
+            if(ModelState.IsValid)
             await TwitterUserService.Add(model.ToEntity());
         }
 

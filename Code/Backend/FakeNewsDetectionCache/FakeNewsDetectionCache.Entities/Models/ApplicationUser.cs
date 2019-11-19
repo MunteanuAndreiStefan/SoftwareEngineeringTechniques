@@ -1,9 +1,11 @@
-﻿using System;
+﻿using FakeNewsDetectionCache.Aspects;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace FakeNewsDetectionCache.Entities.Models
 {
+    [Monitor]
     public class ApplicationUser:Entity
     {
 

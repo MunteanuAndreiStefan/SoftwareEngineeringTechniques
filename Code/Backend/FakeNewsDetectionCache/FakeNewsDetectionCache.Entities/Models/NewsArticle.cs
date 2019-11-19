@@ -1,8 +1,10 @@
-﻿using System;
+﻿using FakeNewsDetectionCache.Aspects;
+using System;
 using System.Collections.Generic;
 
 namespace FakeNewsDetectionCache.Entities.Models
 {
+    [Monitor]
     public partial class NewsArticle:Entity
     {
         //public int Id { get; set; }

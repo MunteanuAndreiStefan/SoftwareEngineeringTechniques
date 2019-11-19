@@ -3,6 +3,7 @@ using FakeNewsDetectionCache.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FakeNewsDetectionCache.Service
 {
@@ -11,6 +12,11 @@ namespace FakeNewsDetectionCache.Service
         public ApplicationUserService(Repository dbContext) : base(dbContext)
         {
 
+        }
+
+        public async Task<bool> IsUsernameUnique(string username)
+        {
+            return (await GetByFilter(x => x.Username == username)).Count == 0;
         }
     }
 }
