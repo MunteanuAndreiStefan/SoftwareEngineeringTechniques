@@ -3,6 +3,7 @@ import json
 import requests
 from analyzers import TweetAnalyzerRandom, UserAnalyzerRandom
 from config import Config as cfg
+from logger import LogDecorator
 
 class Manager():
 
@@ -11,6 +12,7 @@ class Manager():
         self.tweet_analyzer = TweetAnalyzerRandom()
         self.user_analyzer = UserAnalyzerRandom()
 
+    @LogDecorator()
     def generate_tweet_response(self, tweet_url, score, username):
         return {
             "url": tweet_url,
@@ -18,6 +20,7 @@ class Manager():
             "username": username
         }
 
+    @LogDecorator()
     def analyze_tweet(self, tweet_url):
 
         username = re.findall(r'twitter.com/(\w+)/status/', tweet_url)[0]
@@ -50,5 +53,6 @@ class Manager():
 
         return self.generate_tweet_response(tweet_url, score, username)
 
+    @LogDecorator()
     def analyze_user(self, user_id):
         return self.user_analyzer.analyze(user_id)

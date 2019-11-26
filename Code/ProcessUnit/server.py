@@ -1,14 +1,17 @@
 from flask import Flask, escape, request
 from manager import Manager
 import json
+from logger import LogDecorator
 
 app = Flask(__name__)
 manager = Manager()
 
+@LogDecorator()
 @app.route('/')
 def index():
     return f'Hello!'
 
+@LogDecorator()
 @app.route('/tweet/')
 def fake_tweet():
 
@@ -17,6 +20,7 @@ def fake_tweet():
     
     return json.dumps(response, indent=4)
 
+@LogDecorator()
 @app.route('/user/')
 def fake_user():
 
