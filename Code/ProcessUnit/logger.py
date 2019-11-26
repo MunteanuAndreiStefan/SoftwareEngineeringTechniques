@@ -1,26 +1,23 @@
 import functools
 import logging
-logger = logging.getLogger('decorator-log')
+logger = logging.getLogger('ProcessUnit')
 logger.setLevel(logging.DEBUG)
 
-# create console handler and set level to debug
-ch = logging.FileHandler('log.txt')
+ch = logging.FileHandler('process_unit_log.txt')
 ch.setLevel(logging.DEBUG)
 
-# create formatter
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
-# add formatter to ch
+formatter = logging.Formatter('[%(asctime)s] %(message)s')
 ch.setFormatter(formatter)
-
-# add ch to logger
 logger.addHandler(ch)
+
+def log(message):
+    logging.getLogger('ProcessUnit').debug("{0}MSG   {1}".format('\t'*LogDecorator.indent, message))
 
 class LogDecorator(object):
     indent = 0
 
     def __init__(self):
-        self.logger = logging.getLogger('decorator-log')
+        self.logger = logging.getLogger('ProcessUnit')
 
     def __call__(self, fn):
         @functools.wraps(fn)

@@ -3,7 +3,7 @@ import json
 import requests
 from analyzers import TweetAnalyzerRandom, UserAnalyzerRandom
 from config import Config as cfg
-from logger import LogDecorator
+from logger import LogDecorator, log
 
 class Manager():
 
@@ -33,7 +33,7 @@ class Manager():
 
             if tweet_url == tweet['source']:
 
-                print(f"Tweet data is in cache.")
+                log(f"Tweet found in cache.")
                 return self.generate_tweet_response(tweet_url, tweet['credibilityScore'], username)
 
         score = self.tweet_analyzer.analyze(tweet_url)
@@ -47,7 +47,7 @@ class Manager():
 
         json_content = json.dumps(cache_entry)
 
-        print(f"NEW ENTRY\n{json_content}")
+        log(f"Tweet not found in cache. Submitting new entry: {json_content}")
 
         requests.post(cfg.tweet_cache_url, headers={"Content-Type": "application/json", "Accept": "text/plain"}, json=cache_entry)
 
