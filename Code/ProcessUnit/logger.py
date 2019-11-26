@@ -26,11 +26,11 @@ class LogDecorator(object):
         @functools.wraps(fn)
         def decorated(*args, **kwargs):
             try:
-                self.logger.debug("START {0} - {1} - {2} - {3}".format(fn.__name__, ' '*self.indent, args, kwargs))
-                self.indent += 1
+                self.logger.debug("{0}START {1} - {2} - {3}".format('\t'*LogDecorator.indent, fn.__name__, args, kwargs))
+                LogDecorator.indent += 1
                 result = fn(*args, **kwargs)
-                self.logger.debug("END   {0} - {1} - {2}".format(fn.__name__, ' '*self.indent, result))
-                self.indent -= 1
+                LogDecorator.indent -= 1
+                self.logger.debug("{0}END   {1} - {2}".format('\t'*LogDecorator.indent, fn.__name__, result))
                 return result
             except Exception as ex:
                 self.logger.debug("Exception {0}".format(ex))
