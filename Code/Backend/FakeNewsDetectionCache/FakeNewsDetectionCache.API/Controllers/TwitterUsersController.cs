@@ -5,13 +5,17 @@ using System.Threading.Tasks;
 using FakeNewsDetectionCache.API.ViewModels;
 using FakeNewsDetectionCache.API.ViewModels.TwitterUser;
 using FakeNewsDetectionCache.Aspects;
+using FakeNewsDetectionCache.Authentication;
+using FakeNewsDetectionCache.Authentication.Authorization;
 using FakeNewsDetectionCache.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FakeNewsDetectionCache.API.Controllers
 {
     [Log]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TwitterUsersController : ControllerBase
@@ -25,13 +29,17 @@ namespace FakeNewsDetectionCache.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = Policies.OnlyExtension)]
         public async Task<JsonResult> Get()
         {
             var items = await TwitterUserService.GetAll();
+            if (items.Count == 0)
+                Response.StatusCode = StatusCodes.Status404NotFound;
             return new JsonResult(items);
         }
 
         [HttpPost("{model}")]
+        [Authorize(Policy = Policies.OnlyExtension)]
         public async Task<JsonResult> GetFiltered(TwitterUserFilterViewModel model)
         {
             var items = await model.ApplyFilter(await TwitterUserService.GetAsQueriable());
@@ -39,6 +47,7 @@ namespace FakeNewsDetectionCache.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = Policies.OnlyDevelopers)]
         public async Task Post(TwitterUserViewModel model)
         {
             if(ModelState.IsValid)
@@ -46,18 +55,26 @@ namespace FakeNewsDetectionCache.API.Controllers
         }
 
         [HttpPut]
+        [Authorize(Policy = Policies.OnlyDevelopers)]
         public async Task Put(TwitterUserViewModel model)
         {
-            await TwitterUserService.Update(model.ToEntity());
+            try
+            {
+                await TwitterUserService.Update(model.ToEntity());
+            }
+            catch { Response.StatusCode = StatusCodes.Status400BadRequest; }
         }
 
         [HttpDelete("{Id}")]
+        [Authorize(Policy = Policies.OnlyDevelopers)]
         public async Task Delete(int Id)
         {
             var entityToDelete = (await TwitterUserService.GetByFilter(x => x.Id == Id)).FirstOrDefault();
 
             if (entityToDelete != null)
                 await TwitterUserService.Delete(entityToDelete);
+            else
+                Response.StatusCode = StatusCodes.Status404NotFound;
         }
 
     }

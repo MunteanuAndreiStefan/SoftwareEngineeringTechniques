@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FakeNewsDetectionCache.Authentication\FakeNewsDetectionCache.Authentication.csproj" />
     <ProjectReference Include="..\FakeNewsDetectionCache.Interfaces\FakeNewsDetectionCache.Interfaces.csproj" />
     <ProjectReference Include="..\FakeNewsDetectionCache.Service\FakeNewsDetectionCache.Service.csproj" />
   </ItemGroup>
