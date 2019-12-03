@@ -5,6 +5,8 @@ from nltk.stem import WordNetLemmatizer
 import numpy as np
 import os
 import gensim
+from googlesearch import search
+from newspaper import Article
 
 def sentence_tokenize(text):
     return sent_tokenize(text)
@@ -53,7 +55,7 @@ def analyze(subject, data):
         results.append(sims[query_doc_tf_idf])
 
 example = 'The 2019 Soul Train Music Awards are in the books, ending in a big night for Chris Brown and his song with Drake, "No Guidance," which took home three trophies. Here\'s the full list of winners.'
-
+"""
 analyze(
     example,
     [
@@ -65,5 +67,29 @@ analyze(
         'I have a cat and a dog and I love both of them'
     ]
 )
+"""
 
-print(remove_stop_words(tokenize(example)))
+keywords = remove_stop_words(tokenize(example))
+
+query = ''
+for k in keywords:
+    query += k + ' '
+
+print(f'Query: {query}')
+
+for url in search(query, tld='com', stop=10):
+
+    print(url)
+
+    #article = Article(url)
+
+    #try:
+        #article.download()
+        #article.parse()
+    #except:
+        #continue
+    
+    # article.nlp()
+
+    #print(article.title)
+    

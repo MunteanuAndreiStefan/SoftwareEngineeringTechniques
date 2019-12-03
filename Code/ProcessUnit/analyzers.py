@@ -58,5 +58,5 @@ class UserAnalyzer:
 class UserAnalyzerRandom(UserAnalyzer):
     
     @LogDecorator()
-    def analyze(self, user_id):
+    def analyze(self, username):
         return random.randrange(0, 100)
