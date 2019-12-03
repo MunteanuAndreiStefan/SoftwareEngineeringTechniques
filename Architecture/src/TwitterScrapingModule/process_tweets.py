@@ -5,6 +5,7 @@ import time
 import redis
 import json
 import re
+import math
 import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -13,6 +14,10 @@ nltk.download('wordnet')
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from nltk.corpus import sentiwordnet as swn
+from rake_nltk import Metric, Rake
+import tfidf
+
+
 
 next(swn.all_senti_synsets())
 
@@ -21,6 +26,27 @@ logging.basicConfig(filename='process.log', filemode='a', level='INFO',
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 redis_client = redis.StrictRedis(host='localhost', port=6379, db=0)
+
+def compute_term_frequency(word_dict, bow):
+    tf_dict = {}
+    bow_count = len(bow)
+    for word, count in word_dict.items():
+        tf_dict[word] = count/float(bow_count)
+    return tf_dict
+
+def compute_inverse_data_frequency(doc_list):
+    idf_dict = {}
+    n = len(doc_list)
+    idf_dict = dict.fromkeys(doc_list[0].keys(), 0)
+    for doc in doc_list:
+        for word, val in doc.items():
+            if val > 0:
+                idf_dict[word] += 1
+
+    for word, vald in idf_dict.items():
+        idf_dict[word] = math.log10(n/float(val))
+
+    return idf_dict
 
 def preprocess_tweet(text):
     # Check characters to see if they are in punctuation
@@ -44,6 +70,7 @@ def preprocess_tweet(text):
 def process_tweet(tweet):
     tweet = json.loads(tweet)
     text = tweet["text"]
+    print(tfidf.get_word_frequencies(text))
     print(preprocess_tweet(text))
 
 
