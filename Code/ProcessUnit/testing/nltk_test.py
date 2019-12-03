@@ -20,10 +20,40 @@ def remove_stop_words(words):
     stop_words = set(stopwords.words('english')) 
     return [w for w in words if not w in stop_words]
 
-def analyze(subject, data):
+def get_articles(text):
 
-    words = word_tokenize(subject)
-    sentences = sent_tokenize(subject)
+    keywords = remove_stop_words(tokenize(text))
+
+    query = ''
+    for k in keywords:
+        query += k + ' '
+
+    print(f'Query: {query}')
+
+    data = []
+
+    for url in search(query, tld='com', stop=10):
+
+        print(url)
+
+        article = Article(url)
+
+        try:
+            article.download()
+            article.parse()
+        except:
+            continue
+        
+        # article.nlp()
+
+        data.append(article)
+
+    return data
+
+def analyze(text):
+
+    words = word_tokenize(text)
+    sentences = sent_tokenize(text)
 
     words = [[w.lower() for w in word_tokenize(text)] for text in sentences]
 
@@ -44,52 +74,23 @@ def analyze(subject, data):
 
     results = []
 
-    for line in data:
+    data = get_articles(text)
+
+    for article in data:
+
+        line = article.text
+
         query_doc = [w.lower() for w in word_tokenize(line)]
         query_doc_bow = dictionary.doc2bow(query_doc)
 
         query_doc_tf_idf = tfidf[query_doc_bow]
         
-        print(sims[query_doc_tf_idf], line, np.average(sims[query_doc_tf_idf])) 
+        print(sims[query_doc_tf_idf], article.title, np.average(sims[query_doc_tf_idf])) 
 
-        results.append(sims[query_doc_tf_idf])
+        results.append(np.max(sims[query_doc_tf_idf]))
+
+    return int(max(results) * 100)
 
 example = 'The 2019 Soul Train Music Awards are in the books, ending in a big night for Chris Brown and his song with Drake, "No Guidance," which took home three trophies. Here\'s the full list of winners.'
-"""
-analyze(
-    example,
-    [
-        'Chris brows won three prizez at the 2019 edition of The Soul Train Music Awards.',
-        'Chris Brown and Drake are the winners of the 2019 Soul Train Music Awards.',
-        'Drake has started recording for his 2019 album.',
-        'The amount of hybrid vehicles has doubled since last year',
-        'Grass is green',
-        'I have a cat and a dog and I love both of them'
-    ]
-)
-"""
 
-keywords = remove_stop_words(tokenize(example))
-
-query = ''
-for k in keywords:
-    query += k + ' '
-
-print(f'Query: {query}')
-
-for url in search(query, tld='com', stop=10):
-
-    print(url)
-
-    #article = Article(url)
-
-    #try:
-        #article.download()
-        #article.parse()
-    #except:
-        #continue
-    
-    # article.nlp()
-
-    #print(article.title)
-    
+print(analyze(example))

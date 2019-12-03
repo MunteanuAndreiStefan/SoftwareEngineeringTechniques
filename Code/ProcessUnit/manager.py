@@ -27,6 +27,7 @@ class Manager():
         username = re.findall(r'twitter.com/(\w+)/status/', tweet_url)[0]
 
         # Lookup tweet info in cache
+        '''
         content = requests.get(cfg.tweet_cache_url).content
 
         tweet_list = json.loads(content)
@@ -35,7 +36,7 @@ class Manager():
             if tweet_url == tweet['source']:
                 log(f"Tweet found in cache.")
                 return self.generate_tweet_response(tweet_url, tweet['credibilityScore'], username)
-        
+        '''
         # Lookup username in cache
         content = requests.get(cfg.twitter_user_cache_url).content
         users_list = json.loads(content)
