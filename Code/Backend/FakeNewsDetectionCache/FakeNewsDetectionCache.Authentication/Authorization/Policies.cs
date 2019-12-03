@@ -8,5 +8,6 @@ namespace FakeNewsDetectionCache.Authentication.Authorization
     {
         public const string OnlyExtension = nameof(OnlyExtension);
         public const string OnlyDevelopers = nameof(OnlyDevelopers);
+        public const string OnlyProcessingService= nameof(OnlyProcessingService);
     }
 }

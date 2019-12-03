@@ -7,14 +7,13 @@ using FakeNewsDetectionCache.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using FakeNewsDetectionCache.API.ViewModels.NewsArticle;
-using FakeNewsDetectionCache.Aspects;
 using Microsoft.AspNetCore.Authorization;
 using FakeNewsDetectionCache.Authentication;
 using FakeNewsDetectionCache.Authentication.Authorization;
 
 namespace FakeNewsDetectionCache.API.Controllers
 {
-    [Log]
+    //[Log]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]

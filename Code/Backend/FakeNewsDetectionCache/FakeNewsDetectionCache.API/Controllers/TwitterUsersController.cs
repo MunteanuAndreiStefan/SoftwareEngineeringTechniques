@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using FakeNewsDetectionCache.API.ViewModels;
 using FakeNewsDetectionCache.API.ViewModels.TwitterUser;
-using FakeNewsDetectionCache.Aspects;
 using FakeNewsDetectionCache.Authentication;
 using FakeNewsDetectionCache.Authentication.Authorization;
 using FakeNewsDetectionCache.Interfaces;
@@ -14,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FakeNewsDetectionCache.API.Controllers
 {
-    [Log]
+    //[Log]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -47,7 +46,7 @@ namespace FakeNewsDetectionCache.API.Controllers
         }
 
         [HttpPost]
-        [Authorize(Policy = Policies.OnlyDevelopers)]
+        [Authorize(Policy = Policies.OnlyProcessingService)]
         public async Task Post(TwitterUserViewModel model)
         {
             if(ModelState.IsValid)
@@ -55,7 +54,7 @@ namespace FakeNewsDetectionCache.API.Controllers
         }
 
         [HttpPut]
-        [Authorize(Policy = Policies.OnlyDevelopers)]
+        [Authorize(Policy = Policies.OnlyProcessingService)]
         public async Task Put(TwitterUserViewModel model)
         {
             try

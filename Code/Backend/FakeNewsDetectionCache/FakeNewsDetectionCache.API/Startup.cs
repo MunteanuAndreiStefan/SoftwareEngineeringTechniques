@@ -53,10 +53,13 @@ namespace FakeNewsDetectionCache.API
             {
                 options.AddPolicy(Policies.OnlyExtension, policy => policy.Requirements.Add(new OnlyExtensionRequirement()));
                 options.AddPolicy(Policies.OnlyDevelopers, policy => policy.Requirements.Add(new OnlyDevelopersRequirement()));
+                options.AddPolicy(Policies.OnlyProcessingService, policy => policy.Requirements.Add(new OnlyProcessingServiceRequirement()));
             });
 
             services.AddSingleton<IAuthorizationHandler, OnlyExtensionAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, OnlyDevelopersAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationHandler, OnlyProcessingServiceAuthorizationHandler>();
+
 
             //var connection = @"Server=localhost\SQLEXPRESS;Database=FakeNewsDetectionCache;Trusted_Connection=True;";
             var connection =

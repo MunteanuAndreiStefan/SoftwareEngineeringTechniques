@@ -1,10 +1,9 @@
-﻿using FakeNewsDetectionCache.Aspects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace FakeNewsDetectionCache.Entities.Models
 {
-    [Monitor]
+    //[Monitor]
     public partial class TwitterUser:Entity
     {
         public TwitterUser()

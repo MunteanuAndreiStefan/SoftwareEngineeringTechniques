@@ -17,8 +17,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\FakeNewsDetectionCache.Aspects\FakeNewsDetectionCache.Aspects.csproj" />
-  </ItemGroup>
-
 </Project>

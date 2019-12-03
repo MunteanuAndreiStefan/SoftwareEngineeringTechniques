@@ -24,6 +24,11 @@ namespace FakeNewsDetectionCache.Authentication
                 new List<string>
                 {
                     Roles.Developer
+                }),
+            new ApiKey(3, "ProcessingService", "DE420B29-CF80-4928-A463-0931F1D72118", new DateTime(2019, 12, 04),
+                new List<string>
+                {
+                    Roles.ProcessingService
                 })
         };
 

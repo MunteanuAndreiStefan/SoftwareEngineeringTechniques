@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FakeNewsDetectionCache.API.ViewModels.ApplicationUser;
-using FakeNewsDetectionCache.Aspects;
 using FakeNewsDetectionCache.Authentication.Authorization;
 using FakeNewsDetectionCache.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FakeNewsDetectionCache.API.Controllers
 {
-    [Log]
+    //[Log]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
