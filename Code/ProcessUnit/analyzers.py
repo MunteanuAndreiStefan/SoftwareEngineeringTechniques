@@ -1,4 +1,6 @@
 import random
+from twitter_utils import get_tweet_data
+from semantic_analyzer import SemanticAnalyzer
 from logger import LogDecorator
 
 ### Tweet analyzers
@@ -42,7 +44,14 @@ class TweetAnalyzerSemantic(TweetAnalyzer):
 
     @LogDecorator()
     def analyze(self, tweet_url):
-        return 0
+
+        tweet_data = get_tweet_data(tweet_url)
+
+        sman = SemanticAnalyzer()
+
+        score = sman.analyze(tweet_data['text'])
+
+        return score
 
 ### User analyzers
 

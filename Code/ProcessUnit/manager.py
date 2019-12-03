@@ -13,11 +13,12 @@ class Manager():
         self.user_analyzer = UserAnalyzerRandom()
 
     @LogDecorator()
-    def generate_tweet_response(self, tweet_url, score, username):
+    def generate_tweet_response(self, tweet_url, score, username, user_score):
         return {
             "url": tweet_url,
             "score": score,
-            "username": username
+            "username": username,
+            "user_score": user_score
         }
 
     @LogDecorator()
@@ -38,12 +39,13 @@ class Manager():
                 return self.generate_tweet_response(tweet_url, tweet['credibilityScore'], username)
         '''
         # Lookup username in cache
-        content = requests.get(cfg.twitter_user_cache_url).content
+        content = requests.get(cfg.twitter_user_cache_url, headers={"X-Api-Key":cfg.x_api_key}).content
         users_list = json.loads(content)
 
         user_score = -1
 
         for user_info in users_list:
+            log(user_info)
             if username == user_info['username']:
                 log(f"User found in cache.")
                 user_score = user_info['credibilityScore']
@@ -66,10 +68,10 @@ class Manager():
             headers = {
                     "Content-Type": "application/json", 
                     "Accept": "text/plain",
-                    "X-Api-Key":"C5BFF7F0-B4DF-475E-A331-F737424F013C"
+                    "X-Api-Key":cfg.x_api_key
                 }
 
-            requests.post(cfg.twitter_user_cache_url, headers=headers, json=json_user_entry)
+            requests.post(cfg.twitter_user_cache_url, headers=headers, json=user_cache_entry)
 
         log(f"User score: {user_score}")
 
@@ -78,7 +80,7 @@ class Manager():
         log(f"Tweet score: {score}")
 
         # Adjust score based on user score
-        score = (0.75 * score) + (0.25 * user_score)
+        score = int((0.75 * score) + (0.25 * user_score))
         log(f"Tweet score (user score adjusted): {score}")
 
         # Update cache
@@ -96,12 +98,12 @@ class Manager():
         headers = {
             "Content-Type": "application/json",
             "Accept": "text/plain",
-            "X-Api-Key":"C5BFF7F0-B4DF-475E-A331-F737424F013C"
+            "X-Api-Key":cfg.x_api_key
         }
 
         requests.post(cfg.tweet_cache_url, headers=headers, json=cache_entry)
 
-        return self.generate_tweet_response(tweet_url, score, username)
+        return self.generate_tweet_response(tweet_url, score, username, user_score)
 
     @LogDecorator()
     def analyze_user(self, user_id):
