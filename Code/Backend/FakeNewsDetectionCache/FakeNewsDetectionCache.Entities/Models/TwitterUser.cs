@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace FakeNewsDetectionCache.Entities.Models
 {
+    //[Monitor]
     public partial class TwitterUser:Entity
     {
         public TwitterUser()
@@ -11,6 +12,7 @@ namespace FakeNewsDetectionCache.Entities.Models
         }
 
         //public int Id { get; set; }
+        
         public string Username { get; set; }
         public int? CredibilityScore { get; set; }
 

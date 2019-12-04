@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeNewsDetectionCache.Inte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeNewsDetectionCache.API", "FakeNewsDetectionCache.API\FakeNewsDetectionCache.API.csproj", "{16BCB83C-21D0-4CF6-8F9F-725E7E992C82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeNewsDetectionCache.Aspects", "FakeNewsDetectionCache.Aspects\FakeNewsDetectionCache.Aspects.csproj", "{97ADB5E9-0DEE-4D4E-8BEC-2F28762AEF5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeNewsDetectionCache.Aspects", "FakeNewsDetectionCache.Aspects\FakeNewsDetectionCache.Aspects.csproj", "{97ADB5E9-0DEE-4D4E-8BEC-2F28762AEF5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeNewsDetectionCache.Authentication", "FakeNewsDetectionCache.Authentication\FakeNewsDetectionCache.Authentication.csproj", "{972E29FD-29A1-4728-8825-5AAAE4469941}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{97ADB5E9-0DEE-4D4E-8BEC-2F28762AEF5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97ADB5E9-0DEE-4D4E-8BEC-2F28762AEF5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97ADB5E9-0DEE-4D4E-8BEC-2F28762AEF5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972E29FD-29A1-4728-8825-5AAAE4469941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972E29FD-29A1-4728-8825-5AAAE4469941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972E29FD-29A1-4728-8825-5AAAE4469941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972E29FD-29A1-4728-8825-5AAAE4469941}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

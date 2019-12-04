@@ -10,11 +10,11 @@ namespace FakeNewsDetectionCache.Aspects
     public class Log: Attribute
     {
 
-        protected ILogger logger;
+        protected ILogger Logger;
 
         public Log()
         {
-            logger = new LoggerFactory().AddFile("Logs/aspects-{Date}.txt").CreateLogger(typeof(Log));
+            Logger = new LoggerFactory().AddFile("Logs/aspects-{Date}.txt").CreateLogger(typeof(Log));
         }
 
         [Advice(Kind.Around, Targets = Target.Method)]
@@ -23,10 +23,10 @@ namespace FakeNewsDetectionCache.Aspects
             [Argument(Source.Arguments)] object[] arguments,
             [Argument(Source.Target)] Func<object[], object> method)
         {
-            string args = "";
+            var args = "";
             foreach (var arg in arguments)
-                args = args + arg.ToString();
-            logger.LogInformation($"Executing method {name} with the arguments {args}");
+                args = args + arg;
+            Logger.LogInformation($"Executing method {name} with the arguments {args}");
             //Console.WriteLine($"Executing method {name}");
 
             var sw = Stopwatch.StartNew();
@@ -36,7 +36,7 @@ namespace FakeNewsDetectionCache.Aspects
             sw.Stop();
 
             //Console.WriteLine($"Executed method {name} in {sw.ElapsedMilliseconds} ms");
-            logger.LogInformation($"Executed method {name} in {sw.ElapsedMilliseconds} ms with the result {result}");
+            Logger.LogInformation($"Executed method {name} in {sw.ElapsedMilliseconds} ms with the result {result}");
             return result;
         }
     }
