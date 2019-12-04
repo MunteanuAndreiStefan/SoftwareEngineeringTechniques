@@ -1,6 +1,7 @@
 from flask import Flask, escape, request
 from manager import Manager
 import json
+from logger import LogDecorator
 
 app = Flask(__name__)
 manager = Manager()
