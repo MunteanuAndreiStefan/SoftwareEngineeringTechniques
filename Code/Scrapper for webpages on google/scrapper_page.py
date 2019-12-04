@@ -6,7 +6,7 @@ update_tld_names()
 
 urlList = set()
 urlList = { "https://profs.info.uaic.ro"  }
-listOfWords = set(["uaic", "info", "profs", "wade",  "test", "note"])
+listOfWords = set(["uaic", "info", "profs", "wade",  "test", "note"]) #Keywords from the page that should be there
 
 def printListToFile(filePath, list):
 	f = open(filePath, 'w')
@@ -46,4 +46,4 @@ for url in urlList:
         except:
             print("An exception occurred on one page") 
 
-    printListToFile("Competitors.txt", domainChecked)
+    printListToFile("Competitors.txt", domainChecked) #Document with all pages on which one or multiple keywords were found, in order to put a credibility of the source before.
