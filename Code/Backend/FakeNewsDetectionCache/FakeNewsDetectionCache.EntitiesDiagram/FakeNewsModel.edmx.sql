@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/04/2019 15:23:44
+-- Date Created: 11/12/2019 18:10:57
 -- Generated from EDMX file: C:\Users\maste\Desktop\SoftwareEngineeringTechniques\Backend\FakeNewsDetectionCache\FakeNewsDetectionCache.EntitiesDiagram\FakeNewsModel.edmx
 -- --------------------------------------------------
 
@@ -28,8 +28,11 @@ GO
 IF OBJECT_ID(N'[dbo].[NewsArticles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[NewsArticles];
 GO
-IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Users];
+IF OBJECT_ID(N'[dbo].[TwitterUsers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TwitterUsers];
+GO
+IF OBJECT_ID(N'[dbo].[ApplicationUsers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ApplicationUsers];
 GO
 
 -- --------------------------------------------------

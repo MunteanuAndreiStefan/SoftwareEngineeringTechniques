@@ -1,5 +1,4 @@
-﻿using FakeNewsDetectionCache.Aspects;
-using FakeNewsDetectionCache.Entities;
+﻿using FakeNewsDetectionCache.Entities;
 using FakeNewsDetectionCache.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FakeNewsDetectionCache.Service
 {
-    [Log]
+    //[Log]
     public abstract class CrudService<T, TDbContext> : BaseService<TDbContext>
       , ICrudService<T>
       where T : Entity, new()

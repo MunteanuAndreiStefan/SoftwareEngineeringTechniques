@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using FakeNewsDetectionCache.Aspects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Logging;
 
 namespace FakeNewsDetectionCache.Entities.Models
 {
-    [Log]
+    //[Log]
     public partial class Repository : DbContext
     {
         public Repository()

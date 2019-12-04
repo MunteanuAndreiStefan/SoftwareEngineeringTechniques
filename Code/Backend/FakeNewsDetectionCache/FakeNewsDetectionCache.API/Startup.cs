@@ -2,10 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FakeNewsDetectionCache.API.Swagger;
+using FakeNewsDetectionCache.Authentication;
+using FakeNewsDetectionCache.Authentication.Authorization;
+using FakeNewsDetectionCache.Authentication.Authorization.Handlers;
+using FakeNewsDetectionCache.Authentication.Authorization.Requirements;
 using FakeNewsDetectionCache.Entities;
 using FakeNewsDetectionCache.Entities.Models;
 using FakeNewsDetectionCache.Interfaces;
 using FakeNewsDetectionCache.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,9 +38,37 @@ namespace FakeNewsDetectionCache.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_3_0); ;
+            services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            var connection = @"Server=localhost\SQLEXPRESS;Database=FakeNewsDetectionCache;Trusted_Connection=True;";
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = ApiKeyAuthenticationOptions.DefaultScheme;
+                options.DefaultChallengeScheme = ApiKeyAuthenticationOptions.DefaultScheme;
+            })
+                    .AddApiKeySupport(options => { });
+
+            services.AddScoped<IGetApiKeyQuery, InMemoryGetApiKeyQuery>();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(Policies.OnlyExtension, policy => policy.Requirements.Add(new OnlyExtensionRequirement()));
+                options.AddPolicy(Policies.OnlyDevelopers, policy => policy.Requirements.Add(new OnlyDevelopersRequirement()));
+                options.AddPolicy(Policies.OnlyProcessingService, policy => policy.Requirements.Add(new OnlyProcessingServiceRequirement()));
+            });
+
+            services.AddSingleton<IAuthorizationHandler, OnlyExtensionAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationHandler, OnlyDevelopersAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationHandler, OnlyProcessingServiceAuthorizationHandler>();
+
+
+            //var connection = @"Server=localhost\SQLEXPRESS;Database=FakeNewsDetectionCache;Trusted_Connection=True;";
+            var connection =
+            Microsoft
+                .Extensions
+                .Configuration
+                .ConfigurationExtensions
+                .GetConnectionString(this.Configuration, "FakeNewsModelContainer");
+
 
             services.AddDbContext<Repository>(options => options.UseSqlServer(connection)
                                                         .UseLoggerFactory(new LoggerFactory().AddFile("Logs/ts-{Date}.txt"))
@@ -54,6 +88,7 @@ namespace FakeNewsDetectionCache.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+                c.OperationFilter<AddRequiredHeaderParameter>();
             });
 
 
@@ -77,13 +112,14 @@ namespace FakeNewsDetectionCache.API
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fake News Detection Cache API V1");
                 //c.RoutePrefix = string.Empty;
             });
 
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -91,7 +127,7 @@ namespace FakeNewsDetectionCache.API
                 endpoints.MapControllers();
             });
 
-            
+
 
         }
     }
