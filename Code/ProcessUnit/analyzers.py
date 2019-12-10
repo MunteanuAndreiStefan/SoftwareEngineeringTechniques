@@ -36,7 +36,7 @@ class TweetAnalyzerHeuristic(TweetAnalyzer):
 class TweetAnalyzerML(TweetAnalyzer):
 
     @LogDecorator()
-    def analyze(self, tweettweet_data_url):
+    def analyze(self, tweet_data):
         return 0
 
 
