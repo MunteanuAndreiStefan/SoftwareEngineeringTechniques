@@ -60,7 +60,7 @@ namespace FakeNewsDetectionCache.Service
 
         public async Task<IQueryable<T>> GetAsQueriable()
         {
-            return DbSet.AsQueryable();
+            return DbSet.AsNoTracking().AsQueryable();
         }
     }
 }
