@@ -14,10 +14,10 @@ LogDecorator()
 def get_tweet_data(tweet_url):
 
     id = int(re.findall(r'twitter.com/\w+/status/([0-9]+).*', tweet_url)[0])
-    return api.get_status(id)
+    return api.get_status(id)._json
 
 if __name__ == '__main__':
 
-    test_url = r'https://twitter.com/shiber/status/1194322785461559296'
+    test_url = r'https://twitter.com/ABSCBNNews/status/1199477938162302976'
 
-    print(json.dumps(get_tweet_data(test_url)))
+    print(json.dumps(get_tweet_data(test_url), indent=4))

@@ -4,6 +4,7 @@ import requests
 from analyzers import TweetAnalyzerRandom, UserAnalyzerRandom
 from config import Config as cfg
 from logger import LogDecorator, log
+from twitter_utils import get_tweet_data
 
 class Manager():
 
@@ -13,11 +14,12 @@ class Manager():
         self.user_analyzer = UserAnalyzerRandom()
 
     @LogDecorator()
-    def generate_tweet_response(self, tweet_url, score, username, user_score):
+    def generate_tweet_response(self, tweet_url, score, user_score, tweet_data):
         return {
             "url": tweet_url,
             "score": score,
-            "username": username,
+            "user": tweet_data['user']['name'],
+            "text": tweet_data['text'],
             "user_score": user_score
         }
 
@@ -45,7 +47,7 @@ class Manager():
         user_score = -1
 
         for user_info in users_list:
-            log(user_info)
+            # log(user_info)
             if username == user_info['username']:
                 log(f"User found in cache.")
                 user_score = user_info['credibilityScore']
@@ -76,7 +78,9 @@ class Manager():
         log(f"User score: {user_score}")
 
         # Calculate tweet score
-        score = self.tweet_analyzer.analyze(tweet_url)
+        tweet_data = get_tweet_data(tweet_url)
+
+        score = self.tweet_analyzer.analyze(tweet_data)
         log(f"Tweet score: {score}")
 
         # Adjust score based on user score
@@ -103,7 +107,7 @@ class Manager():
 
         requests.post(cfg.tweet_cache_url, headers=headers, json=cache_entry)
 
-        return self.generate_tweet_response(tweet_url, score, username, user_score)
+        return self.generate_tweet_response(tweet_url, score, user_score, tweet_data)
 
     @LogDecorator()
     def analyze_user(self, user_id):

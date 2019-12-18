@@ -22,33 +22,30 @@ class TweetAnalyzer:
 class TweetAnalyzerRandom(TweetAnalyzer):
     
     @LogDecorator()
-    def analyze(self, tweet_url):
+    def analyze(self, tweet_data):
         return random.randrange(0, 100)
 
 
 class TweetAnalyzerHeuristic(TweetAnalyzer):
 
     @LogDecorator()
-    def analyze(self, tweet_url):
+    def analyze(self, tweet_data):
         return 0
 
 
 class TweetAnalyzerML(TweetAnalyzer):
 
     @LogDecorator()
-    def analyze(self, tweet_url):
+    def analyze(self, tweet_data):
         return 0
 
 
 class TweetAnalyzerSemantic(TweetAnalyzer):
 
     @LogDecorator()
-    def analyze(self, tweet_url):
-
-        tweet_data = get_tweet_data(tweet_url)
+    def analyze(self, tweet_data):
 
         sman = SemanticAnalyzer()
-
         score = sman.analyze(tweet_data['text'])
 
         return score
