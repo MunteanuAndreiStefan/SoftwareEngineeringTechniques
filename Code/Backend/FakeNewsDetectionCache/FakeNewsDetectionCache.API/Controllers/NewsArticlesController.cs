@@ -29,14 +29,24 @@ namespace FakeNewsDetectionCache.API.Controllers
 
 
         [HttpGet]
-        [Authorize(Policy =Policies.OnlyExtension)]
+        [Authorize(Policy = Policies.OnlyExtension)]
         public async Task<JsonResult> Get()
         {
             var items = await NewsArticleService.GetAll();
-            if(items.Count==0)
+            if (items.Count == 0)
                 Response.StatusCode = StatusCodes.Status404NotFound;
-            
+
             return new JsonResult(items);
+        }
+
+        [HttpGet("{url}")]
+        [Authorize(Policy = Policies.OnlyExtension)]
+        public async Task<JsonResult> Get([FromQuery]string url)
+        {
+            var item = await NewsArticleService.GetArticleByUrl(url);
+            
+
+            return new JsonResult(item);
         }
 
 

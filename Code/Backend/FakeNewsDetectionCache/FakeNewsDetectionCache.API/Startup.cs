@@ -11,6 +11,7 @@ using FakeNewsDetectionCache.Entities;
 using FakeNewsDetectionCache.Entities.Models;
 using FakeNewsDetectionCache.Interfaces;
 using FakeNewsDetectionCache.Service;
+using FakeNewsDetectionCache.Service.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -91,7 +92,7 @@ namespace FakeNewsDetectionCache.API
                 c.OperationFilter<AddRequiredHeaderParameter>();
             });
 
-
+            services.Configure<ProcessingUnitConfig>(Configuration.GetSection("ProcessingUnitConfig"));
 
         }
 
