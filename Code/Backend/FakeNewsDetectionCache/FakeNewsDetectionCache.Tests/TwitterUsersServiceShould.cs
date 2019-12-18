@@ -58,7 +58,7 @@ namespace FakeNewsDetectionCache.Tests
         }
 
         [Fact]
-        public async Task ShoulDeleteNewsArticle()
+        public async Task ShoulDeleteTwitterUser()
         {
             userId = await twitterUserService.Add(new TwitterUser { Username = "TestUser", CredibilityScore = 69, });
             var entityToDelete = (await twitterUserService.GetByFilter(x => x.Username == "TestUser")).FirstOrDefault();
