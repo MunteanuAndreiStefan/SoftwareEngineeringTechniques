@@ -75,6 +75,9 @@
     <Compile Include="TwitterUser.cs">
       <DependentUpon>FakeNewsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Vote.cs">
+      <DependentUpon>FakeNewsModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="FakeNewsModel.edmx">

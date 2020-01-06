@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Logging;
 
 namespace FakeNewsDetectionCache.Entities.Models
 {
-    //[Log]
     public partial class Repository : DbContext
     {
         public Repository()
@@ -18,21 +15,17 @@ namespace FakeNewsDetectionCache.Entities.Models
         {
         }
 
-        //public virtual DbSet<NewsArticle> NewsArticles { get; set; }
-        //public virtual DbSet<TwitterUser> Users { get; set; }
-
         public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public virtual DbSet<NewsArticle> NewsArticles { get; set; }
         public virtual DbSet<TwitterUser> TwitterUsers { get; set; }
-
-
+        public virtual DbSet<Vote> Votes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=SCYLLA\\SQLEXPRESS;Database=FakeNewsDetectionCache;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=FakeNewsDetectionCache;Trusted_Connection=True;");
             }
         }
 
@@ -64,18 +57,34 @@ namespace FakeNewsDetectionCache.Entities.Models
                 entity.Property(e => e.Username).IsRequired();
             });
 
+            modelBuilder.Entity<Vote>(entity =>
+            {
+                entity.HasIndex(e => e.ApplicationUserId)
+                    .HasName("IX_FK_VoteApplicationUser");
+
+                entity.HasIndex(e => e.NewsArticleId)
+                    .HasName("IX_FK_VoteNewsArticle");
+
+                entity.Property(e => e.ApplicationUserId).HasColumnName("ApplicationUser_Id");
+
+                entity.Property(e => e.NewsArticleId).HasColumnName("NewsArticle_Id");
+
+                entity.HasOne(d => d.ApplicationUser)
+                    .WithMany(p => p.Votes)
+                    .HasForeignKey(d => d.ApplicationUserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_VoteApplicationUser");
+
+                entity.HasOne(d => d.NewsArticle)
+                    .WithMany(p => p.Votes)
+                    .HasForeignKey(d => d.NewsArticleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_VoteNewsArticle");
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-        public override ValueTask DisposeAsync()
-        {
-            return base.DisposeAsync();
-        }
-        public override void Dispose()
-        {
-            base.Dispose();
-        }
     }
 }

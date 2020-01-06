@@ -41,6 +41,25 @@ namespace FakeNewsDetectionCache.API
 
             services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
+            ConfigureAuthentication(services);
+
+            ConfigureAuthorization(services);
+
+
+            ConfigureContext(services);
+
+            ConfigureEntitiesServices(services);
+
+
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            ConfigureSwagger(services);
+
+            services.Configure<ProcessingUnitConfig>(Configuration.GetSection("ProcessingUnitConfig"));
+
+        }
+
+        public void ConfigureAuthentication(IServiceCollection services)
+        {
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = ApiKeyAuthenticationOptions.DefaultScheme;
@@ -49,7 +68,10 @@ namespace FakeNewsDetectionCache.API
                     .AddApiKeySupport(options => { });
 
             services.AddScoped<IGetApiKeyQuery, InMemoryGetApiKeyQuery>();
+        }
 
+        public void ConfigureAuthorization(IServiceCollection services)
+        {
             services.AddAuthorization(options =>
             {
                 options.AddPolicy(Policies.OnlyExtension, policy => policy.Requirements.Add(new OnlyExtensionRequirement()));
@@ -60,8 +82,10 @@ namespace FakeNewsDetectionCache.API
             services.AddSingleton<IAuthorizationHandler, OnlyExtensionAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, OnlyDevelopersAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, OnlyProcessingServiceAuthorizationHandler>();
+        }
 
-
+        public void ConfigureContext(IServiceCollection services)
+        {
             //var connection = @"Server=localhost\SQLEXPRESS;Database=FakeNewsDetectionCache;Trusted_Connection=True;";
             var connection =
             Microsoft
@@ -80,21 +104,26 @@ namespace FakeNewsDetectionCache.API
             //.UseLoggerFactory(new LoggerFactory().AddFile("LogsInMemory/ts-{Date}.txt"))
             //                                            .EnableSensitiveDataLogging()
             //                                            );
+        }
+
+        public void ConfigureEntitiesServices(IServiceCollection services)
+        {
             services.AddScoped<ITwitterUserService, TwitterUserService>();
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
             services.AddScoped<INewsArticleService, NewsArticleService>();
+            services.AddScoped<IVoteService, VoteService>();
+        }
 
 
-            // Register the Swagger generator, defining 1 or more Swagger documents
+        public void ConfigureSwagger(IServiceCollection services)
+        {
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
                 c.OperationFilter<AddRequiredHeaderParameter>();
             });
-
-            services.Configure<ProcessingUnitConfig>(Configuration.GetSection("ProcessingUnitConfig"));
-
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

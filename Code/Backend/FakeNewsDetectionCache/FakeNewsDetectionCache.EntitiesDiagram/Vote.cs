@@ -12,19 +12,12 @@ namespace FakeNewsDetectionCache.EntitiesDiagram
     using System;
     using System.Collections.Generic;
     
-    public partial class ApplicationUser
+    public partial class Vote
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ApplicationUser()
-        {
-            this.Votes = new HashSet<Vote>();
-        }
-    
         public int Id { get; set; }
-        public string Username { get; set; }
-        public Nullable<int> CredibilityScore { get; set; }
+        public bool IsTrue { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vote> Votes { get; set; }
+        public virtual NewsArticle NewsArticle { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

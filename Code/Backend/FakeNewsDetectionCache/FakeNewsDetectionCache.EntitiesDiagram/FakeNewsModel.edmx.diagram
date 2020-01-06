@@ -9,6 +9,9 @@
         <EntityTypeShape EntityType="FakeNewsModel.TwitterUser" Width="1.5" PointX="8.875" PointY="2.5" />
         <AssociationConnector Association="FakeNewsModel.NewsArticeUser" />
         <EntityTypeShape EntityType="FakeNewsModel.ApplicationUser" Width="1.5" PointX="8.875" PointY="5.125" />
+        <EntityTypeShape EntityType="FakeNewsModel.Vote" Width="1.5" PointX="5.625" PointY="5.125" />
+        <AssociationConnector Association="FakeNewsModel.VoteNewsArticle" />
+        <AssociationConnector Association="FakeNewsModel.VoteApplicationUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
