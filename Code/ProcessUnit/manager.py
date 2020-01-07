@@ -1,7 +1,7 @@
 import re
 import json
 import requests
-from analyzers import TweetAnalyzerRandom, UserAnalyzerRandom
+from analyzers import TweetAnalyzerRandom, UserAnalyzerRandom, SemanticAnalyzer
 from config import Config as cfg
 from logger import LogDecorator, log
 from twitter_utils import get_tweet_data
@@ -10,7 +10,7 @@ class Manager():
 
     def __init__(self):
 
-        self.tweet_analyzer = TweetAnalyzerRandom()
+        self.tweet_analyzer = SemanticAnalyzer()
         self.user_analyzer = UserAnalyzerRandom()
 
     @LogDecorator()
@@ -26,8 +26,11 @@ class Manager():
     @LogDecorator()
     def analyze_tweet(self, tweet_url):
 
+        # Get tweet data
+        tweet_data = get_tweet_data(tweet_url)
+
         # Extract username
-        username = re.findall(r'twitter.com/(\w+)/status/', tweet_url)[0]
+        username = tweet_data['user']['name']
 
         # Lookup tweet info in cache
         '''
@@ -79,8 +82,7 @@ class Manager():
         log(f"User score: {user_score}")
 
         # Calculate tweet score
-        tweet_data = get_tweet_data(tweet_url)
-
+        
         score = self.tweet_analyzer.analyze(tweet_data)
         log(f"Tweet score: {score}")
 
