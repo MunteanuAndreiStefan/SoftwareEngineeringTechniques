@@ -3,28 +3,28 @@ setTimeout(() => {
     console.log(header.length);
     const random = Math.floor(Math.random() * 5) + 1;
     for (let i = 0; i < header.length; i++) {
-
         // Set false alert
-        if ( i === random ) {
-            let xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-
-            xhr.addEventListener("readystatechange", function() {
-                if(this.readyState === 4) {
-                    if (JSON.parse(this.responseText)[0].credibilityScore < 50) {
-                        header[i].appendChild(createBadge(true));
-                    } else header[i].appendChild(createBadge(false));
-                }
-            });
-
-            xhr.open("GET", "https://fakenewsdetection.azurewebsites.net/api/newsarticles");
-            xhr.send();
-        } else {
+        if ( i === random ) { createRequest(); }
+        else {
             // CSS Styling Neutral
             header[i].appendChild(createBadge(false));
         }
     }
 }, 2000);
+
+function createRequest() {
+    let xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function() {
+        if(this.readyState === 4) {
+            if (JSON.parse(this.responseText)[0].credibilityScore < 50) {
+                header[i].appendChild(createBadge(true));
+            } else header[i].appendChild(createBadge(false));
+        }
+    });
+    xhr.open("GET", "https://fakenewsdetection.azurewebsites.net/api/newsarticles");
+    xhr.send();
+}
 
 function createBadge(bool) {
     let status = document.createElement('span');
@@ -47,4 +47,3 @@ function createBadge(bool) {
     }
     return status;
 }
-

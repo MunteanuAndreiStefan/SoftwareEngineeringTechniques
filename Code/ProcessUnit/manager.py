@@ -6,6 +6,7 @@ from config import Config as cfg
 from logger import LogDecorator, log
 from twitter_utils import get_tweet_data
 
+
 class Manager():
 
     def __init__(self):
@@ -41,7 +42,7 @@ class Manager():
                 return self.generate_tweet_response(tweet_url, tweet['credibilityScore'], username)
         '''
         # Lookup username in cache
-        content = requests.get(cfg.twitter_user_cache_url, headers={"X-Api-Key":cfg.x_api_key}).content
+        content = requests.get(cfg.twitter_user_cache_url, headers={"X-Api-Key": cfg.x_api_key}).content
         users_list = json.loads(content)
 
         user_score = -1
@@ -68,10 +69,10 @@ class Manager():
             log(f"User not found in cache. Submitting new entry: {json_user_entry}")
 
             headers = {
-                    "Content-Type": "application/json", 
-                    "Accept": "text/plain",
-                    "X-Api-Key":cfg.x_api_key
-                }
+                "Content-Type": "application/json",
+                "Accept": "text/plain",
+                "X-Api-Key": cfg.x_api_key
+            }
 
             requests.post(cfg.twitter_user_cache_url, headers=headers, json=user_cache_entry)
 
@@ -102,7 +103,7 @@ class Manager():
         headers = {
             "Content-Type": "application/json",
             "Accept": "text/plain",
-            "X-Api-Key":cfg.x_api_key
+            "X-Api-Key": cfg.x_api_key
         }
 
         requests.post(cfg.tweet_cache_url, headers=headers, json=cache_entry)
