@@ -4,6 +4,7 @@ using System.Text;
 
 namespace FakeNewsDetectionCache.Entities.Models
 {
+    //[Monitor]
     public class ApplicationUser:Entity
     {
 

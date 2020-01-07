@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace FakeNewsDetectionCache.Service
 {
+    //[Log]
     public abstract class CrudService<T, TDbContext> : BaseService<TDbContext>
       , ICrudService<T>
       where T : Entity, new()

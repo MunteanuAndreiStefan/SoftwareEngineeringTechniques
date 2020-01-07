@@ -8,8 +8,30 @@
 
 .gr-title {
     position: relative;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.gr-title-1 {
+    position: relative;
     margin-top: 240px;
     text-align: center;
+}
+
+.user-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-content {
+    text-align: center;
+}
+
+.user-content > p {
+    font-family: 'Roboto', sans-serif;
+    color: #585858;
+    font-weight: 900;
 }
 
 .wave {
@@ -62,6 +84,7 @@
     text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
     text-indent: 0.3em;
 }
+
 @keyframes drift {
     from {
         transform: rotate(0deg);

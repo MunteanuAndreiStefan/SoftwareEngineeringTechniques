@@ -6,24 +6,22 @@ from urllib.parse import unquote
 update_tld_names()
 
 urlList = set()
-urlList = { "https://www.google.com/search?q=profs+info+wade&ei=g-DBXbSzJ43orgTVxZToCg&start=0"  }
+urlList = { "https://www.google.com/search?q=profs+info+wade&start=0"  } #google search link to be iterated into.
 
-listOfWords = set(["note", "test", "edit", "response", "post", "send", "sign in", "reply", "review"])
+listOfWords = set(["note", "test", "edit", "response", "post", "send", "sign in", "reply", "review"]) #keywords to be checked
 
-doNotContain = set(["pdf", "xml", "doc", "docx", "xls", "txt", "gz"])
+doNotContain = set(["pdf", "xml", "doc", "docx", "xls", "txt", "gz"]) #files to be skiped
 
 def printListToFile(filePath, list):
 	f = open(filePath, 'a')
 	print(*list, sep='\n', file=f)
 	f.close()
 
-
-
 for url in urlList:
     
     counter=0
     
-    while(counter<110):
+    while(counter<110): #number of pages to look into
         
     
         page = requests.get(url)

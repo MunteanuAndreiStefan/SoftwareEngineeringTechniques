@@ -1,10 +1,12 @@
 ﻿using FakeNewsDetectionCache.Entities.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace FakeNewsDetectionCache.API.ViewModels
 {
     public class TwitterUserViewModel
     {
         public int? Id { get; set; }
+        [Required]
         public string Username { get; set; }
         public int? CredibilityScore { get; set; }
 
