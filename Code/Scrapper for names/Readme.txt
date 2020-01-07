@@ -1,2 +1,0 @@
-I've asked for permission to create a scraper that will takes the names from their page: https://www.behindthename.com
-and create a C# generator for names inside my game, this can be seen in the email attached.
