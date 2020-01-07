@@ -6,10 +6,6 @@ from logger import LogDecorator
 app = Flask(__name__)
 manager = Manager()
 
-@app.route('/')
-def index():
-    return f'Hello!'
-
 @app.route('/tweet/')
 def fake_tweet():
 
