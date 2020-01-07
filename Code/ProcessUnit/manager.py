@@ -73,7 +73,8 @@ class Manager():
                     "X-Api-Key":cfg.x_api_key
                 }
 
-            requests.post(cfg.twitter_user_cache_url, headers=headers, json=user_cache_entry)
+            # updated automatically by cache module
+            # requests.post(cfg.twitter_user_cache_url, headers=headers, json=user_cache_entry)
 
         log(f"User score: {user_score}")
 
@@ -105,7 +106,8 @@ class Manager():
             "X-Api-Key":cfg.x_api_key
         }
 
-        requests.post(cfg.tweet_cache_url, headers=headers, json=cache_entry)
+        # updated automatically by cache module
+        # requests.post(cfg.tweet_cache_url, headers=headers, json=cache_entry)
 
         return self.generate_tweet_response(tweet_url, score, user_score, tweet_data)
 
