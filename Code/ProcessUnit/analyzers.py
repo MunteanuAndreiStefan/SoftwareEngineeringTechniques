@@ -87,6 +87,13 @@ class UserAnalyzer:
         score += log(user_data['statuses_count'])
         score += log(user_data['listed_count'])
 
+        # normalize score - between 0 and 100
+        new_max = 100
+        old_max = 5000
+        new_min = 0
+        old_min = 0
+        score = (new_max - new_min) / (old_max - old_min) * (score - old_max) + new_max
+
         if user_data['verified']:
             score += 500
 
